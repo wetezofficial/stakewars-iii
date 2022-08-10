@@ -281,15 +281,15 @@
 
    ![](./images/2022-08-10-18-46-58-image.png)
 
-### 三，为你的验证人节点生成质押池并进行操作
+# 三，为你的验证人节点生成质押池并进行操作
 
 [Deploy a new staking pool for your validator.](https://github.com/near/stakewars-iii/blob/main/challenges/003.md)
 
 > 后续命令的 accountId 都会以 wetezpos.shardnet.near 为例
 
-#### 部署质押池合约
+## 部署质押池合约
 
-##### 部署质押池
+### 部署质押池
 
 > 后续的 pool name 都推荐使用 accountId 自定义的部分，避免混淆
 
@@ -318,9 +318,9 @@ near call factory.shardnet.near create_staking_pool '{"staking_pool_id": "wetezp
 near call <pool_id> update_reward_fee_fraction '{"reward_fee_fraction": {"numerator": 1, "denominator": 100}}' --accountId <account_id> --gas=300000000000000
 ```
 
-#### 对节点做一些交互
+## 对节点做一些交互
 
-##### 质押 Near
+### 质押 Near
 
 ```bash
 near call <pool_id> deposit_and_stake --amount <amount> --accountId <accountId> --gas=300000000000000
@@ -330,7 +330,7 @@ near call <pool_id> deposit_and_stake --amount <amount> --accountId <accountId> 
 
 当你质押超过一定数量（目前是 580）的 Near 之后你应该可以在这个页面看到自己的节点了：[explorer](https://explorer.shardnet.near.org/nodes/validators)
 
-##### 解除质押 NEAR
+### 解除质押 NEAR
 
 解除质押的 yoctoNEAR（10^-24 Near）数量
 
@@ -346,7 +346,7 @@ near call <pool_id> unstake '{"amount": "<amount yoctoNEAR>"}' --accountId <acco
 near call <pool_id> unstake_all --accountId <accountId> --gas=300000000000000
 ```
 
-##### 撤回质押
+### 撤回质押
 
 当执行了撤回质押的命令后，大概 2-3 个 epoch 后可以通过下面的命令取回到账户中
 
@@ -360,7 +360,7 @@ near call <pool_id> withdraw '{"amount": "<amount yoctoNEAR>"}' --accountId <acc
 near call <pool_id> withdraw_all --accountId <accountId> --gas=300000000000000
 ```
 
-##### Ping
+### Ping
 
 Ping 发出新的提案，并更新委托者的赌注余额。每个 epoch 都应该发出 ping 命令，以使报告的奖励保持最新。（在后续任务中会进行定时任务执行 ping）
 
@@ -370,15 +370,15 @@ near call <pool_id> ping '{}' --accountId <accountId> --gas=300000000000000
 
 ![](./images/2022-08-10-19-45-14-image.png)
 
-##### 获取账户所有金额：
+### 获取账户所有金额：
 
 ```bash
 near view <pool_id> get_account_total_balance '{"account_id": "<accountId>"}'
 ```
 
-##### ![](./images/2022-08-10-19-46-10-image.png)
+![](./images/2022-08-10-19-46-10-image.png)
 
-##### 获取质押的金额 :
+### 获取质押的金额 :
 
 ```bash
 near view <pool_id> get_account_staked_balance '{"account_id": "<accountId>"}' ![](./images/2022-08-10-19-46-25-image.png)
@@ -386,7 +386,7 @@ near view <pool_id> get_account_staked_balance '{"account_id": "<accountId>"}' !
 
 ![](./images/2022-08-10-19-46-51-image.png)
 
-##### 获取未质押的金额：
+### 获取未质押的金额：
 
 ```bash
 near view <pool_id> get_account_unstaked_balance '{"account_id": "<accountId>"}'
@@ -394,7 +394,7 @@ near view <pool_id> get_account_unstaked_balance '{"account_id": "<accountId>"}'
 
 ![](./images/2022-08-10-19-47-21-image.png)
 
-##### 查询是否可以提取金额
+### 查询是否可以提取金额
 
 > 返回 true 的时候可以提取
 
@@ -404,15 +404,15 @@ near view <pool_id> is_account_unstaked_balance_available '{"account_id": "<acco
 
 ![](./images/2022-08-10-19-44-19-image.png)
 
-##### 暂停和恢复质押
+### 暂停和恢复质押
 
-###### 暂停
+#### 暂停
 
 ```bash
 near call <pool_id> pause_staking '{}' --accountId <accountId>
 ```
 
-###### 恢复
+##### 恢复
 
 ```bash
 near call <pool_id> resume_staking '{}' --accountId <accountId>
