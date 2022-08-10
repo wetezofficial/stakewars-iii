@@ -28,9 +28,9 @@
 
    **![](https://lh6.googleusercontent.com/co3jurDvPtgxezD2u_x1LgmZp06opJFCtM8SPw4-fn5JI_NXNEILJ5L75P1ssw3LICvFj-s_m5B9pXgJjFRIkgExeTPVOSbANYX8aUmqkpHcO_jnJxbYMYoHSeJbsQl4miXQBMV5ZLPtTshxxHv-LJ8)**
 
-**![](https://lh4.googleusercontent.com/JuR29EcCRuVNRymOYC3t2zmFMgtlN-8C14Zgawi5b2Pt_uBAZBY9OlERECYa4-Y5Ld96GCCdQMGaEV_IStAMi0Xx6ZiAUaBJsW1-WSXpsa0MifmOwfTAe_i5DU_Q_TPW8XBu4q9HwWtdraz_L8vlpNI)**
+    **![](https://lh4.googleusercontent.com/JuR29EcCRuVNRymOYC3t2zmFMgtlN-8C14Zgawi5b2Pt_uBAZBY9OlERECYa4-Y5Ld96GCCdQMGaEV_IStAMi0Xx6ZiAUaBJsW1-WSXpsa0MifmOwfTAe_i5DU_Q_TPW8XBu4q9HwWtdraz_L8vlpNI)**
 
-**![](https://lh4.googleusercontent.com/ifAho6XAPYrJLKV2yl7xI3HqwkKq0VAth57CM2D2VQEyairoA2dJ-oXhUStu5cOpHXODdGvJs7hJ1YQ1cQj0zFiMkxd5rHBbwuYOgTQ6r_DOFOOtpKYmZMTQX-PhYgPLIJX5HEFnQujjBRtAsdZiq2k)**
+    **![](https://lh4.googleusercontent.com/ifAho6XAPYrJLKV2yl7xI3HqwkKq0VAth57CM2D2VQEyairoA2dJ-oXhUStu5cOpHXODdGvJs7hJ1YQ1cQj0zFiMkxd5rHBbwuYOgTQ6r_DOFOOtpKYmZMTQX-PhYgPLIJX5HEFnQujjBRtAsdZiq2k)**
 
 # 二，配置节点服务并同步网络
 
@@ -172,11 +172,11 @@
    sudo systemctl start neard
    ```
 
-    > 如果您因为文件中的错误而需要对服务进行更改。它必须重新加载：
+   > 如果您因为文件中的错误而需要对服务进行更改。它必须重新加载：
 
-    ```bash
-    sudo systemctl reload neard
-    ```
+   ```bash
+   sudo systemctl reload neard
+   ```
 
 3. 观看日志
 
@@ -184,9 +184,11 @@
    journalctl -n 100 -f -u neard
    ```
 
+   ![](./images/2022-08-10-19-56-04-image.png)
+
    以漂亮的打印输出日志
 
-   ```
+   ```bash
    sudo apt install ccze -y
    ```
 
@@ -195,6 +197,10 @@
    ```bash
    journalctl -n 100 -f -u neard | ccze -A
    ```
+
+    ![](./images/2022-08-10-20-00-31-image.png)
+
+
 
 ### 配置验证者
 
@@ -271,7 +277,7 @@
 
 7. 等待区块同步完成变可以进行后续操作（如下图状态）
 
-      ![](./images/2022-08-10-18-46-58-image.png)
+   ![](./images/2022-08-10-18-46-58-image.png)
 
 ### 三，为你的验证人节点生成质押池并进行操作
 
@@ -386,8 +392,6 @@ near view <pool_id> get_account_unstaked_balance '{"account_id": "<accountId>"}'
 
 ![](./images/2022-08-10-19-47-21-image.png)
 
-
-
 ##### 查询是否可以提取金额
 
 > 返回 true 的时候可以提取
@@ -396,7 +400,7 @@ near view <pool_id> get_account_unstaked_balance '{"account_id": "<accountId>"}'
 near view <pool_id> is_account_unstaked_balance_available '{"account_id": "<accountId>"}'
 ```
 
-##### ![](./images/2022-08-10-19-44-19-image.png)
+![](./images/2022-08-10-19-44-19-image.png)
 
 ##### 暂停和恢复质押
 
@@ -442,7 +446,7 @@ sudo apt install curl jq
 curl -s http://127.0.0.1:3030/status | jq .version
 ```
 
-##### ![](./images/2022-08-10-19-39-02-image.png)
+![](./images/2022-08-10-19-39-02-image.png)
 
 ##### 检查委托和质押
 
@@ -450,7 +454,7 @@ curl -s http://127.0.0.1:3030/status | jq .version
 near view <your pool>.factory.shardnet.near get_accounts '{"from_index": 0, "limit": 10}' --accountId <accountId>.shardnet.near
 ```
 
-##### ![](./images/2022-08-10-19-39-29-image.png)
+![](./images/2022-08-10-19-39-29-image.png)
 
 ##### 查询被踢出验证者的原因
 
@@ -467,3 +471,6 @@ curl -r -s -d '{"jsonrpc": "2.0", "method": "validators", "id": "dontcare", "par
 ```
 
 ![](./images/2022-08-10-19-40-23-image.png)
+
+
+> 至此 Near 质押大战 3 的节点设置和基本交互都已经完成了，如果有问题欢迎提 issue
