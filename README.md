@@ -1,5 +1,7 @@
 # Near Stake Wariii
 
+**This tutorial is written in Chinese**
+
 **本文介绍了如何进行 Near 最近开启的 7.22-0909 的第三个 Stake war 的钱包申请与节点构建**
 
 # 硬件准备：
