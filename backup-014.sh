@@ -1,5 +1,5 @@
 #!/bin/bash
-# 0 12 * * * /data/near_backup/backup.sh >> /data/near_backup/backup.log 2>&1
+# 0 12 * * * /home/near/near_backup/backup.sh >> /home/near/near_backup/backup.log 2>&1
 
 DATE=$(date +%Y-%m-%d-%H-%M)
 DATADIR=/home/near/.near
